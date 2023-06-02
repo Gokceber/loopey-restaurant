@@ -3,4 +3,21 @@
 <img src="/images/home.jpg" alt = "nice pic"> 
 
 
+<section>
+    <form method="GET" action="/pizzas"><!--Sednding a get request to this url,
+    method can only be "GET" or "POST", 
+    action points out to the url we want to place the form into-->
+
+        <label for="">
+            Max Price:
+            <input type="number" name="maxPrice" />
+
+        </label>
+
+
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+
 {{> ctaOrderNow}}
