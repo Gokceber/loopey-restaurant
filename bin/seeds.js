@@ -18,18 +18,30 @@ mongoose
             price: 12,
             ingredients: ["mozzarella", "tomato sauce", "basilicum"],
             imageFile: 'pizza-margarita.jpg',
+            /*isVeggie: {
+                default: true,
+            },
+            dough: "with cheese"*/
         },
         {
             title: "veggie",
             price: 15,
             ingredients: ["tomato", "cucumber", "olives"],
             imageFile: 'pizza-veggie.jpg',
+           /* isVeggie: {
+                default: true,
+            },
+           dough: "extra thin"*/
         },
         {
             title: "seafood",
             price: 20,
             ingredients: ["mozzarella", "tomato", "prawn"],
             imageFile: 'pizza-seafood.jpg',
+            //dough: "classic",
+            /* isVeggie: {
+                default: false,
+            },*/
         },
         {
             title: "hawaiian",
