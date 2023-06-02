@@ -2,8 +2,11 @@ const express = require("express");
 const hbs = require("hbs"); //requiring the handlebars package
 const Pizza = require("./models/Pizza.model");
 const mongoose = require("mongoose");
+const bodyParser = require('body-parser');
 
 const app = express();
+
+
 
 mongoose
   .connect("mongodb://127.0.0.1/loopeyRestaurant")
@@ -18,6 +21,8 @@ app.set("views", __dirname + "/views"); //tells our Express app where to look fo
 app.set("view engine", "hbs"); //sets HBS as the template engine
 
 hbs.registerPartials(__dirname + "/views/partials"); //tell HBS which directory we use for partials
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.get(path, code);
 // app.get(path, (req, res, next) => {});
@@ -64,10 +69,10 @@ app.get("/pizzas/seafood", (req, res, send) => {
 
 //// ROUTE PARAMS ////
 // :aNameYouChoose(syntax)
-app.get("/drinks/:drinkName", (req, res, next) => {
-  console.log(req.params);
-  res.send(`display info about....${req.params.drinkName}`);
-});
+//app.get("/drinks/:drinkName", (req, res, next) => {
+//  console.log(req.params);
+//  res.send(`display info about....${req.params.drinkName}`);
+//});
 
 //lines between 37-64 were creating specific routes for each pizza
 //but it is not sustainable when you have 200 diff. pizzas
@@ -108,6 +113,24 @@ app.get("/pizzas", (req, res, next) => {
     })
     .catch((e) => console.log("there was an error"));
 });
+
+//
+// EXAMPLE OF A POST REQUEST + req.body
+//
+
+app.post("/login", (req, res, next) => {
+    console.log("luis is trying to login...")
+    //console.log(req.body)
+
+    const email = req.body.emailaddress;
+
+
+    if(req.body.pwd === "1234"){
+        res.send("welcome")
+    } else {
+        res.send("wrong password")
+    }
+})
 
 app.listen(3000, () => {
   console.log("server listening on port 3000...");
